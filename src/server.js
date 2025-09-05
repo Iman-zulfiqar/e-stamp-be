@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import formRoutes from "./routes/formRoutes.js";
 import path from "path";
 import morgan from 'morgan'
+import borRoutes from './routes/borRoutes.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use(helmet());
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api/auth", authRoutes);
 app.use("/api/reports", formRoutes);
+app.use('/api/bor', borRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
